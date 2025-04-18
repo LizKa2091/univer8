@@ -7,16 +7,9 @@ import { saveTodos, loadTodos } from '../utils/storage';
 import { scheduleReminders } from '../utils/notification';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(loadTodos());
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
-
-  useEffect(() => {
-    const loadedTodos = loadTodos();
-    if (loadedTodos) {
-      setTodos(loadedTodos);
-    }
-  }, []);
 
   useEffect(() => {
     saveTodos(todos);
